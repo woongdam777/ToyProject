@@ -5,8 +5,8 @@ public class ExRun {
         CharacterEx ce = new CharacterEx();
 
 //        ce.CharacterEx1();
-        ce.CharacterEx2();
-
+//        ce.CharacterEx2();
+        ce.Chapter3();
 
     }
 }
