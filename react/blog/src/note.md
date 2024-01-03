@@ -56,3 +56,32 @@ deep copy
 function만들고
 return()안에 html담기
 <함수명></함수명>쓰기
+
+[동적인 UI 만드는 step]
+1. html css 로 미리 디자인 완성
+2. UI의 현재 상태를 state로 저장
+3. state에 따라 UI가 어떻게 보일지 작성
+
+{
+    삼항연산자(ternary operator)
+    조건식 ? 참일때 실행할 코드 : 거짓일 때 실행할 코드
+}
+
+map() 사용법
+1. array자료 갯수만큼 함수안의 코드 실행해줌
+2. 함수의 파라미터는 array안에 있던 자료임
+3. retrun에 뭐 적으면 array로 담아줌
+[1,2,3].map(function(a){
+    return '123123'
+})
+
+파라미터 2개까지 설정가능
+i는 반복문 돌 때마다 0부터 1씩 증가하는 정수
+[1,2,3].map(function(a,i){
+    return '123123'
+})
+
+map함수
+1. 왼쪽 array 자룜나큼 내부코드 실행해줌
+2. retrun 오른쪽에 있는 걸 array로 담아줌
+3. 유용한 파라미터 2개 사용가능
