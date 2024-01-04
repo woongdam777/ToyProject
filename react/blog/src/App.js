@@ -1,7 +1,15 @@
 import './App.css';
 import { useState } from 'react';
+import fetchData from './api';
 
 function App() {
+  useEffect(() => {
+    fetchData(handleData);
+  }, []);
+
+  const handleData = (data) => {
+    console.log('Data:', data);
+  };
 
   let post =`강남 우동 맛집`;
   let [글제목, b] = useState(['오늘 베스트 추천','남자 코트 추천','월간 바지 추천']);
@@ -74,6 +82,8 @@ function App() {
         modal == true ? <Modal /> : null
       }
     </div>
+
+    
   );
 }
 
