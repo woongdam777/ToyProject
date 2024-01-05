@@ -1,12 +1,9 @@
 import './App.css';
 import { useState } from 'react';
-import fetchData from './api';
+
 
 function App() {
-  useEffect(() => {
-    fetchData(handleData);
-  }, []);
-
+  
   const handleData = (data) => {
     console.log('Data:', data);
   };
