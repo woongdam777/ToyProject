@@ -1,7 +1,6 @@
 import './App.css';
 import { useState } from 'react';
 
-
 function App() {
   
   const handleData = (data) => {
@@ -12,6 +11,7 @@ function App() {
   let [글제목, b] = useState(['오늘 베스트 추천','남자 코트 추천','월간 바지 추천']);
   let [따봉, 따봉변경] = useState([0,0,0]);
   let [modal, setModal] = useState(false);
+  let [modalTitle, setModalTitle] = useState(0);
 
   function 남여변경(){
     let copy = [...글제목];
@@ -25,12 +25,13 @@ function App() {
     b(copy);
   }
 
-  function Modal(){
+  function Modal(props){
     return(
       <div className="modal">
-        <h4>제목</h4>
+        <h4>{props.글제목[props.모달제목]}</h4>
         <p>날짜</p>
         <p>상세내용</p>
+        <button onClick={props.남여변경}>변경</button>
       </div>
     )
   }
@@ -66,7 +67,7 @@ function App() {
         글제목.map(function(a,i){
           return ( <div className="list" key={i}>
                       <h4>
-                        <span onClick={()=>{modal==false?setModal(true):setModal(false)}}>{ 글제목[i] }</span>
+                        <span onClick={()=>{modal==false?(setModal(true), setModalTitle(i)):(setModal(false),setModalTitle(0))}}>{ 글제목[i] }</span>
                         <span onClick={ () => {따봉증가(i)}}>👍</span>
                         {따봉[i]}
                       </h4>
@@ -76,7 +77,7 @@ function App() {
       }
 
       {
-        modal == true ? <Modal /> : null
+        modal == true ? <Modal 모달제목={modalTitle} 남여변경={남여변경} 글제목={글제목} /> : null
       }
     </div>
 
