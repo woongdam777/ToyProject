@@ -114,3 +114,23 @@ props를 사용해서 전달할수 있다.
 props도 파라미터 문법이다.
 
 props로 일반 문자도 전송가능
+
+
+input에 뭔가 입력시 코드실행하고 싶으면
+onChange / onInput
+
+<input onChange={()=>{console.log(1)}}>
+
+<input>에 입력한 값 가져오는 법
+<input onChange={(e)=>{console.log(e.target.value)}}>
+e->지금 발생하는 이벤트에 관련한 여러 기능이 담겨잇음
+e.target -> 이벤트가 발생한 html
+e.target.value -> 이벤트가 발생한 html의 값
+
+상위 html로 퍼지는 이벤트 버블링을 막고 싶으면
+e.stopPropagation()
+
+<input>에 입력한 값 저장하려면
+useState이용
+
+state변경함수는 늦게처리됨-> 전문용어로 비동기처리
