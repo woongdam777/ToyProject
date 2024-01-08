@@ -41,6 +41,25 @@ function App() {
     );
   }
 
+  // 옛날 react 컴포넌트 문법 - class
+  // 기본틀 상속 받고, constructor, super, render 3가지 쓰고, 리턴안에다가 컴포넌트 만들고
+  // state는 object 형식으로 데이터를 넣어둘수 있고, props 활용가능
+  // class Modal2 extends React.Component {
+  //   constructor(props){
+  //     super(props);
+  //     this.state = {
+  //       name : 'kim',
+  //       age : 20
+  //     }
+  //   }
+  
+  //   render(){
+  //     return (
+  //       <div>안녕 { this.props.프롭스이름 }</div>
+  //     )
+  //   }
+
+
   function 따봉증가(i) {
     let copy = [...따봉];
     copy[i] += 1;
@@ -49,18 +68,22 @@ function App() {
   }
 
   function 게시글추가(){
-    b([...글제목,글쓰기[0]]);
+    let copy = [...글제목];
+    copy.unshift(글쓰기[0]);
+    b(copy);
+    // b([글쓰기[0],...글제목]);
     따봉변경([...따봉,0]);
   }
 
   function 게시글삭제(i){
+
+
     let copyTitle = [...글제목];
-    let copy따봉 = [...따봉];
-
     copyTitle.splice(i, 1); 
-    copy따봉.splice(i, 1);
-
     b(copyTitle);
+    
+    let copy따봉 = [...따봉];
+    copy따봉.splice(i, 1);
     따봉변경(copy따봉);
   }
 
