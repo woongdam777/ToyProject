@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="download()">다운로드</button>
+    <button onclick="concelDownload()">요청취소</button>
+    <input type="file" onchange="upload()" /> 
+    <script>
+        const controller = new AbortController();
+        controller.signal.addEventListener('abort',()=>{
+            console.log('abort 이벤트 수신함')
+        })
+
+        async function download(){
+            const response = await fetch('chunk',{
+                signal : controller.signal // 취소가능한 요청
+            })
+            const totalLength = response.headers.get('content-length')
+            const chunks = []
+            let receivedLength = 0;
+
+            const reader = response.body.getReader();
+
+            while(true){
+                const {done, value} = await reader.read();
+                if(done) break;~
+
+                chunks.push(value)
+                receivedLength = receivedLength + value.length;
+
+                console.log(`${receivedLength}/${totalLength}바이트 다운로드`, value)
+            }
+
+            const textDecod = new TextDecoder('utf-8')
+            for(const chunk of chunks){
+                const text = textDecod.decode(chunk);
+                console.log(text);
+            }
+        }
+
+        function concelDownload(){
+            controller.abort();
+        }
+
+        function upload(){
+            const formDate = new FormData();
+            formDate.append('file',document.querySelector('input[type=file]').files[0])
+
+            const xhr = new XMLHttpRequest();
+            let uploadProgress = 0;
+
+            const handleProgress = event => {
+                if(event.lengthComputalbe){
+                    uploadProgress = event.loaded / event.total * 100;
+                    console.log(`업로드 진행률: ${uploadProgress}%`)
+                }
+            }
+
+            xhr.upload.addEventListener('progress', handleProgress)
+            xhr.open('POST','/upload')
+            xhr.send(formDate)
+        }
+
+    </script>
+</body>
+</html>
