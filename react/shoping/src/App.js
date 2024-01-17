@@ -2,10 +2,14 @@ import './App.css';
 import React, { useState } from 'react';
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
 
+import data from './data.js';
+
 function App() {
 
   let [womenMenu] = useState(['Sale', 'New in', 'Clothing', 'Dresses', 'Shoes', 'Face+Body']);
   let [menMenu] = useState(['Sale', 'New in', 'Clothing', 'BestSellers', 'Shoes', 'Sportswear']);
+
+  let [shoes] = useState(data);
 
   return (
     <div className="App">
