@@ -37,3 +37,19 @@ export여러개 하려면 export {변수1, 변수2};
 import {a,b} from '.data.js';
 
 함수, 컴포넌트 export 가능
+
+
+object자료
+
+let a = ['kim', 20]
+let b = {name : 'kim', age : 20}
+
+b.name
+
+let data = [{첫번째상품},{},{}]
+
+복잡한 자료에서 데이터 뽑을 땐 시작기호만 잘 보면 됩니다.
+
+상품목록 컴포넌트화
+상품명 데이터바인딩
+반복적인 부분 map 반복문 쓰기

@@ -10,7 +10,7 @@ function App() {
   let [menMenu] = useState(['Sale', 'New in', 'Clothing', 'BestSellers', 'Shoes', 'Sportswear']);
 
   let [shoes] = useState(data);
-
+  // console.log(shoes, shoes[0].title);
   return (
     <div className="App">
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -58,8 +58,8 @@ function App() {
         <div className="row">
           <div className="col-md-4">
             <img src="https://codingapple1.github.io/shop/shoes1.jpg" width="80%" />
-            <h4>상품명</h4>
-            <p>상품정보</p>
+            <h4>{shoes[0].title}</h4>
+            <p>{shoes[0].price}</p>
           </div>
           <div className="col-md-4">
             <img src="https://codingapple1.github.io/shop/shoes2.jpg" width="80%" />
