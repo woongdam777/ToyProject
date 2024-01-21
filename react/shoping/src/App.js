@@ -12,6 +12,16 @@ function App() {
   let [shoes] = useState(data);
   // console.log(shoes, shoes[0].title);
 
+  function Card(props){
+    return(
+      <div className="col-md-4" key={props.i}>
+        <img src={`https://codingapple1.github.io/shop/shoes${props.i+1}.jpg`} width="80%" alt={`Shoe ${props.i+1}`} />
+        <h4>{props.shoes.title}</h4>
+        <p>{props.shoes.price}</p>
+      </div>
+    );
+  }
+
   return (
     <div className="App">
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -59,11 +69,7 @@ function App() {
         <div className="row">
           {shoes.map(function(a,i){
             return(
-              <div className="col-md-4" key={i}>
-                <img src={`https://codingapple1.github.io/shop/shoes${i+1}.jpg`} width="80%" alt={`Shoe ${i+1}`} />
-                <h4>{shoes[i].title}</h4>
-                <p>{shoes[i].price}</p>
-              </div>
+              <Card shoes={shoes[i]} i={i}></Card>
             )
           })}
         </div>
