@@ -18,7 +18,6 @@
               <th class="pin">점포명</th>
               <td>주소</td>
               <td>전화번호</td>
-              
             </tr>
           </thead>
           <tbody>
@@ -30,21 +29,21 @@
         <h1>검색창</h1>
         <div>
           <select name="address1">
-            <option value="">주소(시도)</option>
-            <option value="">서울특별시</option>
-            <option value="">경기도</option>
-            <option value="">강원도</option>
+            <!-- <option value="">주소(시도)</option> -->
+            <option value="서울">서울</option>
+            <option value="경기">경기</option>
           </select>
           <select name="address2">
-            <option value="">주소(시군구)</option>
-            <option value="">강남구</option>
-            <option value="">서초구</option>
-            <option value="">잠실구</option>
+            <!-- <option value="">주소(시군)</option> -->
+            <option value="강남">강남</option>
+            <option value="서초">서초</option>
+            <option value="잠실">잠실</option>
+            <option value="연천">연천</option>
           </select>
         </div>
         <div>
           <select name="week">
-            <option value="">요일</option>
+            <!-- <option value="">요일</option> -->
             <option value="1">월</option>
             <option value="2">화</option>
             <option value="3">수</option>
@@ -59,7 +58,8 @@
           <span>기관명</span>
           <input type="text">
         </div>
-        <div>
+        <div class="btn">
+          <button>검색</button>
           <button>이전</button>
           <button>다음</button>
         </div>
