@@ -6,9 +6,13 @@ btn.addEventListener('click',()=>{
   let add2 = document.querySelector('[name="address2"]').value;
   let week = document.querySelector('[name="week"]').value;
 
+  console.log(add1+" "+add2+" "+week);
+
   let xhr = new XMLHttpRequest();
   let url = 'http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyListInfoInqire'; /*URL*/
+  // let key = '';
   let queryParams = '?' + encodeURIComponent('serviceKey') + '='+'서비스키'; /*Service Key*/
+  // let queryParams = '?' + key + '='+'서비스키'; /*Service Key*/
   queryParams += '&' + encodeURIComponent('Q0') + '=' + encodeURIComponent(add1); /**/
   queryParams += '&' + encodeURIComponent('Q1') + '=' + encodeURIComponent(add2); /**/
   queryParams += '&' + encodeURIComponent('QT') + '=' + encodeURIComponent(week); /**/
@@ -20,6 +24,7 @@ btn.addEventListener('click',()=>{
   xhr.open('GET', url + queryParams);
   xhr.onreadystatechange = function () {
     if (this.readyState == 4) {
+      // console.log('Status: '+this.status+'nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'nBody: '+this.responseText);
       let xmlDoc = new DOMParser().parseFromString(this.responseText, "text/xml");
       let items = xmlDoc.getElementsByTagName("item");
 

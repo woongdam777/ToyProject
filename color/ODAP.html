@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ODAP(Online Draw And Paint)-온라인 그림판 도구</title>
+  <link rel="stylesheet" href="ODAP.css">
+</head>
+<body>
+  <header>
+    <div class="title">
+      <span>ODAP</span>
+      <div>
+        <span>(Online Draw And Paint)</span>
+        <span>-온라인 그림판 도구</span>
+      </div>
+    </div>
+  </header>
+  <aside>
+    <div>색상추출</div>
+    <div>그림판</div>
+  </aside>
+  <main>
+
+    <section class="left-sec">
+      <canvas id="myCanvas" width="400" height="300"></canvas>
+    </section>
+    <section class="right-sec">
+      <ol>
+        <li>원하는 이미지 복사</li>
+        <li>복붙 ctrl + v</li>
+      </ol>
+      <div>
+        <span>이미지 대표 색상</span>
+        <div id="colorDisplay"></div>
+      </div>
+
+      <div>
+        <span>선택한 색상 코드</span>
+        <div id="selectColorDisplay"></div>
+      </div>
+      
+
+
+    </section>
+ </main>
+  <footer>
+    <div>제작자 : 권재웅</div>
+  </footer>
+  <script src="ODAP.js"></script>
+</body>
+</html>
