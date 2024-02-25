@@ -1,3 +1,6 @@
+const lon = "";
+const lat = "";
+
 const btn = document.querySelector('.btn>button');
 
 btn.addEventListener('click',()=>{
@@ -32,9 +35,20 @@ btn.addEventListener('click',()=>{
           let dutyAddr = items[i].querySelector("dutyAddr").textContent;
           let dutyTel1 = items[i].querySelector("dutyTel1").textContent;
           let dutyName = items[i].querySelector("dutyName").textContent;
+          let dutyTime = items[i].querySelector("dutyTime"+week+"s").textContent +" ~ "+ items[i].querySelector("dutyTime"+week+"c").textContent;
+          let wgs84Lon = items[i].querySelector("wgs84Lon").textContent;
+          let wgs84Lat = items[i].querySelector("wgs84Lat").textContent;
 
           let resultTr = document.createElement('tr');
-          resultTr.innerHTML = `<th>`+dutyName+`</th>`+`<td>`+dutyAddr+`</td>`+`<td>`+dutyTel1+`</td>`;
+          resultTr.innerHTML = `<th id="wgs" value=${wgs84Lon+'/'+wgs84Lat} >`+dutyName+`</th>`+`<td>`+dutyAddr+`</td>`+`<td>`+dutyTel1+`</td>`+`<td>`+dutyTime+`</td>`;
+          resultTr.addEventListener('click',()=>{
+            let wgs = document.getElementById('wgs').value;
+            const ww = sgs.split('/');
+            lon = ww[0];
+            lat = ww[1];
+
+            console.log(lon,lat)
+          });
 
           let contentElements = document.querySelector(".primary>table>tbody");
           contentElements.appendChild(resultTr);
@@ -44,4 +58,3 @@ btn.addEventListener('click',()=>{
 
   xhr.send('');
 })
-
