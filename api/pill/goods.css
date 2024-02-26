@@ -23,6 +23,19 @@ aside {
   scroll-snap-type: both mandatory;
   height: 80vh;
 }
+/* Webkit 계열 스크롤바 */
+.primary::-webkit-scrollbar {
+  width: 2px;
+}
+.primary::-webkit-scrollbar-track {
+  background-color: gray;
+}
+.primary::-webkit-scrollbar-thumb { 
+  background-color: skyblue;
+}
+.primary::-webkit-scrollbar-button {
+  display: none;
+}
 @media (min-width: 40em) {
   main {
     display: flex;
