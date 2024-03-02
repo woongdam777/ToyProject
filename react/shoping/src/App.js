@@ -18,7 +18,9 @@ function App() {
   function Card(props){
     return(
       <div className="col-md-4" key={props.i}>
-        <img src={`https://codingapple1.github.io/shop/shoes${props.i+1}.jpg`} width="80%" alt={`Shoe ${props.i+1}`} />
+        <a href={`/Detail/${props.shoes.id}`}>
+          <img src={`https://codingapple1.github.io/shop/shoes${props.i+1}.jpg`} width="80%" alt={`Shoe ${props.i+1}`} />
+        </a>
         <h4>{props.shoes.title}</h4>
         <p>{props.shoes.price}</p>
       </div>
@@ -77,14 +79,14 @@ function App() {
               <div className="row">
                 {shoes.map(function(a,i){
                   return(
-                    <Card shoes={shoes[i]} i={i}></Card>
+                    <Card key={i} shoes={a} i={i}></Card>
                   )
                 })}
               </div>
             </div>
           </>
          } />
-        <Route path='/Detail' element={<Detail/>} />
+        <Route path='/Detail/:id' element={<Detail shoes={shoes} />} />
         <Route path='/event' element={<Event />}>
           <Route path='one' element={<div>첫 주문시 양배추즙 서비스</div>} />  
           <Route path='two' element={<div>생일기념 쿠폰받기</div>} />  
