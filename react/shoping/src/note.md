@@ -193,3 +193,46 @@ import styled from 'styled-components'
 그 사람이 CSS로 짠걸 styled-components 문법으로 다시 바꾸거나 그런 작업이 필요하겠군요.
 그래서 신기술같은거 도입시엔 언제나 미래를 생각해보아야합니다. 
 
+-----
+컴포넌트 라이프사이클 / 인생주기
+1. 페이지에 장착 / 생성이 될 수도 있고 (전문용어로 mount)
+2. 업데이트 / 재렌더링이 될 수도 있고 (전문용어로 update)
+3. 필요없으면 제거 / 삭제가 될 수도 있습니다. (전문용어로 unmount)
+
+왜 알아야되냐
+중간중간 간섭가능 - 코드실행가능
+
+useEffect 안에 적은 코드는 html 렌더링 이후에 동작합니다.
+- 어려운 연산
+- 서버에서 데이터가져오는 작업
+- 타이머 장착하는거
+
+useEffect라고 작명한 이유
+함수의 핵심기능 외에 쓸데없는 기능들을 프로그래밍 용어로 side effect
+컴포넌트의 핵심 기능은 html 렌더링이라 그거 외의 쓸데없는 기능들은 useEffect 안에 적으라는 소리
+
+-----
+useEffect에 넣을 수 있는 실행조건 
+
+useEffect(()=>{ 실행할코드 }, [count])
+useEffect()의 둘째 파라미터로 [ ] 를 넣을 수 있는데 거기에 변수나 state같은 것들을 넣을 수 있습니다.
+그렇게 하면 [ ]에 있는 변수나 state 가 변할 때만 useEffect 안의 코드를 실행해줍니다.
+그래서 위의 코드는 count라는 변수가 변할 때만 useEffect 안의 코드가 실행되겠군요. 
+(참고) [ ] 안에 state 여러개 넣을 수 있음
+아무것도 안넣으면 컴포넌트 mount시 (로드시) 1회 실행하고 영영 실행해주지 않습니다.
+[] 이거만 쓰면 update시 발동 막을수 있음 mount일때만 실행됨
+
+- clean up function
+useEffect 동작하기 전에 특정코드를 실행하고 싶으면 return ()=>{} 안에 넣을 수 있습니다. 
+ ```js
+useEffect(()=>{ 
+  그 다음 실행됨 
+  return ()=>{
+    여기있는게 먼저실행됨
+  }
+}, [count])
+```
+그럼 useEffect 안에 있는 코드를 실행하기 전에 return ()=>{ } 안에 있는 코드를 실행해줍니다. 
+
+(참고1) clean up function에는 타이머제거, socket 연결요청제거, ajax요청 중단 이런 코드를 많이 작성합니다.
+(참고2) 컴포넌트 unmount 시에도 clean up function 안에 있던게 1회 실행됩니다
