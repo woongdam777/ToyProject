@@ -36,6 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const rgbaColor = `rgba(${pixel[0]}, ${pixel[1]}, ${pixel[2]}, ${pixel[3] / 255})`;
     document.getElementById("selectColorDisplay").style.backgroundColor = rgbaColor;
     document.getElementById("selectColorDisplay").innerText = rgbaColor;
+
+    const hexColor = rgbaToHex(rgbaColor)
+    document.getElementById("selectColorDisplayHex").innerText = hexColor;
   });
 
   // 대표 색상 추출 함수
@@ -76,4 +79,19 @@ document.addEventListener("DOMContentLoaded", function () {
       colorDisplay.appendChild(colorSwatch);
     }
   }
+  
 });
+
+document.getElementById("colorDisplay").addEventListener("click", function (event) {
+  const color = window.getComputedStyle(event.target).backgroundColor;
+  document.getElementById("selectColorDisplay").innerText = color;
+
+  const hexColor = rgbaToHex(color)
+  document.getElementById("selectColorDisplayHex").innerText = hexColor;
+});
+
+// RGBA 값 HEX 변환
+function rgbaToHex(rgba) {
+  const [r, g, b] = rgba.match(/\d+/g); // 각 채널 값을 추출합니다.
+  return `#${Number(r).toString(16).padStart(2, '0')}${Number(g).toString(16).padStart(2, '0')}${Number(b).toString(16).padStart(2, '0')}`;
+}
